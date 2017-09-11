@@ -1,0 +1,14 @@
+inverse属性配置
+
+1、主要看业务需要，如果“一”的一方经常需要维护外键，那么就在“一”的一方不要配置
+
+
+
+cascade :级联操作
+    save-update：级联保存,级联修改. 保存A时,同时保存B.
+    delete：删除A，同时删除B，AB都不存在
+    delete-orphan：孤儿删除，解除关系，同时将B删除，A存在的。
+    如果需要配置多项，使用逗号分隔。<set cascade="save-update,delete">
+
+    all : save-update 和 delete 整合
+    all-delete-orphan : 三个整合

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping package="cn.bdqn.entity">
+ 	<class name="Customer" table="t_customer"  >
+		<id name="id" type="integer">
+			<column name="ID" length="4"/>
+			<generator class="native"></generator>
+		</id> 	
+		<property name="name" type="string">
+			<column name="NAME" length="10" not-null="false"/>
+		</property>
+ 		
+ 		<!-- 表达一对多关系中的集合
+ 			name:集合的属性名称
+ 			inverse: 是否将关系的维护反转给对方. 默认值: false
+ 				   true: 在Customer 中 放弃维护外键关系
+ 		 -->
+ 		<set name="orders" inverse="true" cascade="delete-orphan">
+ 			<!--
+ 				key 用来描述外键
+ 				column : 外键的值
+ 			  -->
+ 			<key column="CID" ></key>
+ 			<!-- one-to-many 表达, Customer 与orders 的关系是一对多
+ 				class: 表达关联的另一方的完整类名
+ 			 -->
+ 			<one-to-many class="Order" />
+ 		</set>
+ 	</class>
+ </hibernate-mapping>

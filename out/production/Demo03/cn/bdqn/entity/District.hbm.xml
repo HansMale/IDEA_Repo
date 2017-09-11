@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.bdqn.entity.District" table="DISTRICT" schema="SCOTT">
+        <id name="did" type="int">
+            <column name="DID" sql-type="number(4)" precision="4"/>
+            <generator class="sequence">
+                <param name="sequence">DISTRICT_SEQ</param>
+            </generator>
+        </id>
+        <property name="dname">
+            <column name="DNAME" sql-type="varchar2(20)" length="20" not-null="true"/>
+        </property>
+        <set name="streets" inverse="true" cascade="all">
+            <key column="SID"></key>
+            <one-to-many class="cn.bdqn.entity.Street"/>
+        </set>
+    </class>
+</hibernate-mapping>

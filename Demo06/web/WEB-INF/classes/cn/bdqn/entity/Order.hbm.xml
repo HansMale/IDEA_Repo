@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ <hibernate-mapping package="cn.bdqn.entity">
+ 	<class name="Order" table="t_order"  >
+		<id name="id" type="integer">
+			<column name="ID" length="4"/>
+			<generator class="native"></generator>
+		</id> 	
+		<property name="name" type="string">
+			<column name="NAME" length="10" not-null="false"/>
+		</property>
+ 		
+ 		<!-- 表达多对一关系 
+ 			name: 引用的属性名称
+ 			column: 外键的列名
+ 			class: 我引用的Order的完整类名
+ 		-->
+ 		<many-to-one name="customer" column="CID" class="Customer"/>
+ 	</class>
+ </hibernate-mapping>

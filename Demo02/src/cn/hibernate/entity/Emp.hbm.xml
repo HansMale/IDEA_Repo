@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.hibernate.entity.Emp" table="EMP" schema="SCOTT">
+        <id name="empno">
+            <column name="EMPNO" sql-type="number(4)" precision="4"/>
+        </id>
+        <property name="ename">
+            <column name="ENAME" sql-type="varchar2(10)" length="10" not-null="true"/>
+        </property>
+        <property name="job">
+            <column name="JOB" sql-type="varchar2(9)" length="9" not-null="true"/>
+        </property>
+        <property name="hiredate">
+            <column name="HIREDATE" sql-type="date" not-null="true"/>
+        </property>
+        <property name="sal">
+            <column name="SAL" sql-type="number(7,2)" precision="7" scale="2" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.bdqn.entity.Employee" table="EMPLOYEE" schema="SCOTT">
+        <id name="eid">
+            <column name="EID" sql-type="number(4)" precision="4"/>
+            <generator class="sequence">
+                <param name="sequence">EMPLOYEE_SEQ</param>
+            </generator>
+        </id>
+        <property name="ename">
+            <column name="ENAME" sql-type="varchar2(10)" length="10"/>
+        </property>
+        <set name="projects" table="RELATION" inverse="true" cascade="all">
+            <key column="EMPID"></key>
+            <many-to-many class="cn.bdqn.entity.Project" column="PROID"/>
+        </set>
+    </class>
+</hibernate-mapping>
